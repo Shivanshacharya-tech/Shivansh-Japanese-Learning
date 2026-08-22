@@ -1,14 +1,19 @@
 {
-  "name": "japanese-learning-app",
-  "version": "0.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^8.2.0"
-  }
+	"name": "japanese-learning-frontend",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"generate:kanji": "node scripts/generate-kanji-data.cjs"
+	},
+	"dependencies": {
+		"@vitejs/plugin-react": "latest",
+		"kanji-data": "^1.1.0",
+		"react": "latest",
+		"react-dom": "latest",
+		"vite": "latest"
+	}
 }
