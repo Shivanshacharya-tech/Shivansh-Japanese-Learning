@@ -1,0 +1,56 @@
+import aAudio from "../assets/audio/a.mp3";
+import iAudio from "../assets/audio/i.mp3";
+import uAudio from "../assets/audio/u.mp3";
+import eAudio from "../assets/audio/e.mp3";
+import oAudio from "../assets/audio/o.mp3";
+
+const hiragana = [
+  { character: "あ", romaji: "a", group: "Vowels", audio: aAudio },
+  { character: "い", romaji: "i", group: "Vowels", audio: iAudio },
+  { character: "う", romaji: "u", group: "Vowels", audio: uAudio },
+  { character: "え", romaji: "e", group: "Vowels", audio: eAudio },
+  { character: "お", romaji: "o", group: "Vowels", audio: oAudio },
+  { character: "か", romaji: "ka", group: "K-row" },
+  { character: "き", romaji: "ki", group: "K-row" },
+  { character: "く", romaji: "ku", group: "K-row" },
+  { character: "け", romaji: "ke", group: "K-row" },
+  { character: "こ", romaji: "ko", group: "K-row" },
+  { character: "さ", romaji: "sa", group: "S-row" },
+  { character: "し", romaji: "shi", group: "S-row" },
+  { character: "す", romaji: "su", group: "S-row" },
+  { character: "せ", romaji: "se", group: "S-row" },
+  { character: "そ", romaji: "so", group: "S-row" },
+  { character: "た", romaji: "ta", group: "T-row" },
+  { character: "ち", romaji: "chi", group: "T-row" },
+  { character: "つ", romaji: "tsu", group: "T-row" },
+  { character: "て", romaji: "te", group: "T-row" },
+  { character: "と", romaji: "to", group: "T-row" },
+  { character: "な", romaji: "na", group: "N-row" },
+  { character: "に", romaji: "ni", group: "N-row" },
+  { character: "ぬ", romaji: "nu", group: "N-row" },
+  { character: "ね", romaji: "ne", group: "N-row" },
+  { character: "の", romaji: "no", group: "N-row" },
+  { character: "は", romaji: "ha", group: "H-row" },
+  { character: "ひ", romaji: "hi", group: "H-row" },
+  { character: "ふ", romaji: "fu", group: "H-row" },
+  { character: "へ", romaji: "he", group: "H-row" },
+  { character: "ほ", romaji: "ho", group: "H-row" },
+  { character: "ま", romaji: "ma", group: "M-row" },
+  { character: "み", romaji: "mi", group: "M-row" },
+  { character: "む", romaji: "mu", group: "M-row" },
+  { character: "め", romaji: "me", group: "M-row" },
+  { character: "も", romaji: "mo", group: "M-row" },
+  { character: "や", romaji: "ya", group: "Y-row" },
+  { character: "ゆ", romaji: "yu", group: "Y-row" },
+  { character: "よ", romaji: "yo", group: "Y-row" },
+  { character: "ら", romaji: "ra", group: "R-row" },
+  { character: "り", romaji: "ri", group: "R-row" },
+  { character: "る", romaji: "ru", group: "R-row" },
+  { character: "れ", romaji: "re", group: "R-row" },
+  { character: "ろ", romaji: "ro", group: "R-row" },
+  { character: "わ", romaji: "wa", group: "W-row" },
+  { character: "を", romaji: "wo", group: "W-row" },
+  { character: "ん", romaji: "n", group: "N" },
+];
+
+export default hiragana;
