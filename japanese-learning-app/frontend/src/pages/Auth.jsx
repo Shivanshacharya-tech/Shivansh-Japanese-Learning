@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { login, register, requestPasswordReset, startOAuth } from "../api";
 
-function Auth({ onAuthenticated }) {
+function Auth({ initialError = "", onAuthenticated }) {
   const [mode, setMode] = useState("login");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(initialError);
   const [submitting, setSubmitting] = useState(false);
   const [notice, setNotice] = useState("");
 
@@ -24,22 +24,17 @@ function Auth({ onAuthenticated }) {
       const response = mode === "login" ? await login(username, password) : await register(username, password);
       localStorage.setItem("japanese_learning_token", response.token);
       onAuthenticated(response.user);
-    } catch {
-      setError(mode === "login" ? "Invalid username or password." : "Unable to process this request.");
+    } catch (requestError) {
+      setError(requestError.message);
     } finally {
       setSubmitting(false);
     }
   }
 
-  async function handleProvider(provider) {
+  function handleProvider(provider) {
     setError("");
     setNotice("");
-    try {
-      const response = await startOAuth(provider);
-      setNotice(response.message);
-    } catch (providerError) {
-      setError(providerError.message);
-    }
+    startOAuth(provider);
   }
 
   return (

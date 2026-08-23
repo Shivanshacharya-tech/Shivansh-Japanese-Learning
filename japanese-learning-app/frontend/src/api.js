@@ -14,7 +14,11 @@ async function request(path, options = {}) {
     let detail = `API request failed: ${response.status}`;
     try {
       const body = await response.json();
-      detail = body.detail || detail;
+      if (Array.isArray(body.detail)) {
+        detail = body.detail.map((error) => error.msg).join(" ");
+      } else if (typeof body.detail === "string") {
+        detail = body.detail;
+      }
     } catch {
       // Preserve the status if the server does not return JSON.
     }
@@ -46,7 +50,7 @@ export function requestPasswordReset(username) {
 }
 
 export function startOAuth(provider) {
-  return request(`/auth/${provider}/start`);
+  window.location.assign(`${API_BASE_URL}/auth/${provider}/start`);
 }
 
 export function getCurrentUser() {

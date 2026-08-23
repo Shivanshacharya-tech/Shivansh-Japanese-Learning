@@ -15,9 +15,21 @@ import { getCurrentUser, logout } from "./api";
 function App() {
   const [page, setPage] = useState("home");
   const [user, setUser] = useState(null);
+  const [oauthError] = useState(() => new URLSearchParams(window.location.search).get("oauth_error") || "");
   const [checkingAuth, setCheckingAuth] = useState(Boolean(localStorage.getItem("japanese_learning_token")));
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const oauthToken = new URLSearchParams(window.location.hash.slice(1)).get("token");
+    if (params.has("oauth_error")) {
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+    if (oauthToken) {
+      localStorage.setItem("japanese_learning_token", oauthToken);
+      window.history.replaceState({}, document.title, window.location.pathname);
+      setCheckingAuth(true);
+      return;
+    }
     if (!checkingAuth) return;
     getCurrentUser()
       .then(setUser)
@@ -30,7 +42,7 @@ function App() {
   }
 
   if (!user) {
-    return <Auth onAuthenticated={setUser} />;
+    return <Auth initialError={oauthError} onAuthenticated={setUser} />;
   }
 
   if (page === "hiragana") {
